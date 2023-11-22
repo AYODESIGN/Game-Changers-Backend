@@ -33,18 +33,37 @@ const sessionConfig = require('./config/session');
 //     console.error('Error connecting to MongoDB:', err);
 //   });
 
-const DB_URI = 'mongodb+srv://ayoubcj:ayoub92@cluster0.wdlezms.mongodb.net/';
-
-mongoose.connect(DB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(() => {
-  console.log('Connected to MongoDB Atlas');
-})
-.catch(err => {
-  console.error('Error connecting to MongoDB Atlas:', err);
+const store = new MongoDBStore({
+  uri: process.env.MONGO_URL, // Replace with your MongoDB connection URI
+  collection: 'sessions',
 });
+
+app.use(
+  session({
+    secret: 'ayoub92', // Replace with your secret key
+    resave: false,
+    saveUninitialized: false,
+    store: store,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24, // 1 day
+    },
+  })
+);
+
+// Connect to MongoDB using the configuration from database.js
+const DB_URI = process.env.MONGO_URL;
+
+mongoose
+  .connect(DB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log('Connected to MongoDB Atlas');
+  })
+  .catch((err) => {
+    console.error('Error connecting to MongoDB Atlas:', err);
+  });
 
  //ayoubcj:<password>@cluster0.wdlezms.mongodb.net/
 
