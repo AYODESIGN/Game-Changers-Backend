@@ -4,7 +4,7 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 
 // Create a new instance of MongoDBStore
 const store = new MongoDBStore({
-  uri: process.env.MONGO_URL, // Replace with your MongoDB connection URI
+  uri: 'mongodb+srv://ayoubcj:ayoub92@cluster0.wdlezms.mongodb.net/',
   collection: 'sessions',
 });
 
