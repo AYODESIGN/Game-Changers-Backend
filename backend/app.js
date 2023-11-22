@@ -33,10 +33,7 @@ const sessionConfig = require('./config/session');
 //     console.error('Error connecting to MongoDB:', err);
 //   });
 
-const store = new MongoDBStore({
-  uri: process.env.MONGO_URL, // Replace with your MongoDB connection URI
-  collection: 'sessions',
-});
+
 
 
 
