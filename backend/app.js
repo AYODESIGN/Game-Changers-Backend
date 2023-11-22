@@ -40,17 +40,16 @@ const sessionConfig = require('./config/session');
 // Connect to MongoDB using the configuration from database.js
 const DB_URI = process.env.MONGO_URL;
 
-mongoose
-  .connect(DB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log('Connected to MongoDB Atlas');
-  })
-  .catch((err) => {
-    console.error('Error connecting to MongoDB Atlas:', err);
-  });
+mongoose.connect(DB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => {
+  console.log('Connected to MongoDB Atlas');
+})
+.catch(err => {
+  console.error('Error connecting to MongoDB Atlas:', err);
+});
 
  //ayoubcj:<password>@cluster0.wdlezms.mongodb.net/
 
