@@ -38,17 +38,7 @@ const store = new MongoDBStore({
   collection: 'sessions',
 });
 
-app.use(
-  session({
-    secret: 'ayoub92', // Replace with your secret key
-    resave: false,
-    saveUninitialized: false,
-    store: store,
-    cookie: {
-      maxAge: 1000 * 60 * 60 * 24, // 1 day
-    },
-  })
-);
+
 
 // Connect to MongoDB using the configuration from database.js
 const DB_URI = process.env.MONGO_URL;
