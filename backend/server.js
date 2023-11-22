@@ -1,6 +1,6 @@
 
 // import app express
-const app = require("./backend/app")
+const app = require("./app")
 
 //   http://localhost:4000
 app.listen(4000, () => {
