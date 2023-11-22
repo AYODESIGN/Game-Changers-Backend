@@ -1,5 +1,4 @@
 
-module.exports = sessionConfig;
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 
